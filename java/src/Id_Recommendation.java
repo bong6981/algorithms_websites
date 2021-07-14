@@ -1,6 +1,6 @@
 import org.cef.handler.CefLifeSpanHandler;
 
-public class id_recommendation {
+public class Id_Recommendation {
 
     public static void main(String[] args) {
         System.out.println(solution("-_.~!@#$%^&*()=+[{]}:?,<>/._-"));
