@@ -12,16 +12,17 @@ public class ClawCrane {
         List<Integer> resultList = new ArrayList<Integer>();
         int count = 0;
         for( int column : moves) {
+            int index = column -1;
             for(int j=0; j<board.length; j++) {
-                if(board[j][column] != 0) {
-                    if(resultList.size() != 0 && resultList.get(resultList.size()-1) == board[j][column]) {
+                if(board[j][index] != 0) {
+                    if(resultList.size() != 0 && resultList.get(resultList.size()-1) == board[j][index]) {
                         count += 2;
                         resultList.remove(resultList.size() -1);
-                        board[j][column] = 0;
+                        board[j][index] = 0;
                         break;
                     } else {
-                        resultList.add(board[j][column]);
-                        board[j][column] = 0;
+                        resultList.add(board[j][index]);
+                        board[j][index] = 0;
                         break;
                     }
                 }
