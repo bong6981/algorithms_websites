@@ -3,7 +3,7 @@ def solution(absolutes, signs):
     for x in range(len(absolutes)) :
         if(signs[x] == True) :
             answer += absolutes[x]
-        else :
+        else :                                          
             answer -= absolutes[x]         
     return answer
 

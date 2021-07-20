@@ -23,10 +23,7 @@ def solution(lottos, win_nums):
 def solution_2(lottos, win_numbs) :
     rank = [ 6, 6, 5, 4, 3, 2, 1]
     cnt_0 = lottos.count(0)
-    ans = 0
-    for x in win_numbs :
-        if x in lottos :
-            ans+=1
+    ans = len([x for x in lottos if x in win_numbs])
     return [rank[ans + cnt_0], rank[ans]]
 
 def solution_3(lottos, win_numbs) :
