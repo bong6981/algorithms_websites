@@ -6,8 +6,7 @@ def solution(n, lost, reserve):
             lost.remove(x)
     
     for x in to_remove :
-        if x in reserve:
-            reserve.remove(x)
+        reserve.remove(x)
     
     for x in reserve :
         if x-1 in lost :
