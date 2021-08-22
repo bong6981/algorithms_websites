@@ -10,7 +10,7 @@ public class Printers {
 
     }
 
-    //파이썬 풀이보고 구현함 
+    //파이썬 풀이보고 구현함
     public static int solution(int[] priorities, int location) {
         Queue<Integer> queue = new LinkedList<>(Arrays.stream(priorities).boxed().collect(Collectors.toList()));
 

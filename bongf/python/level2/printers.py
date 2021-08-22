@@ -33,10 +33,3 @@ def solution2(priorities, location):
 
 print(solution2([2, 1, 3, 2], 2))
 print(solution2([1, 1, 9, 1, 1, 1], 0))
-
-
-# priorities = [3,1,2,1]
-# max_index = priorities.index(max(priorities))
-# print(max_index)
-# priorities = priorities[(max_index+1):] + priorities[0:(max_index)]
-# print(priorities)
