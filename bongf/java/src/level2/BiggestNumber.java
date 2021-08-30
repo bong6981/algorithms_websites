@@ -32,7 +32,7 @@ public class BiggestNumber {
         return answer;
     }
 
-    //깔끔 : compare 구현방식, 정수를 string으로 바꾸는 방식 , 마지막 0으로 시작할 때 삼항연산자로 return하는 방식 
+    //깔끔 : compare 구현방식, 정수를 string으로 바꾸는 방식 , 마지막 0으로 시작할 때 삼항연산자로 return하는 방식
     public String solution2(int[] numbers) {
         String[] nums = new String[numbers.length];
 
