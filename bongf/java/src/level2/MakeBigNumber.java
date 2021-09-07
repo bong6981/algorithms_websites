@@ -36,7 +36,7 @@ public class MakeBigNumber {
     }
 
     //StringBuilder 활용한 방법
-    //for문 돌면서 그 기준점(sb.length)가 변할 때 인덱스 적절하게 바꾸는 법 
+    //for문 돌면서 그 기준점(sb.length)가 변할 때 인덱스 적절하게 바꾸는 법
     public String solution2(String number, int k) {
         StringBuilder sb = new StringBuilder(number);
         for (int i = 0; i+1 < sb.length() && k>0; i++) {
