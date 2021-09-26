@@ -9,9 +9,9 @@ public class PermutationNPR {
         int[] output = new int[n];
         boolean[] visited = new boolean[n];
 
-        perm(arr, output, visited, 0, n, 3);
+//        perm(arr, output, visited, 0, n, 3);
         System.out.println();
-//        permutation(arr, 0, n, 3);
+        permutation(arr, 0, n, 3);
     }
 
     // 사전순으로 순열 구하기
