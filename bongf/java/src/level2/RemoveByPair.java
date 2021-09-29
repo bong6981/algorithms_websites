@@ -24,7 +24,7 @@ public class RemoveByPair {
                 }
             }
         }
-        // return은 stack.isEmpty() ? 1 : 0 ; 
+        // return은 stack.isEmpty() ? 1 : 0 ;
         if (answer.isEmpty()) {
             return 1;
         }
