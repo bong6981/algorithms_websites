@@ -1,3 +1,5 @@
+#https://programmers.co.kr/learn/courses/30/lessons/64065
+
 from collections import deque
 def solution(s):
     s = deque(s[1:-1])
