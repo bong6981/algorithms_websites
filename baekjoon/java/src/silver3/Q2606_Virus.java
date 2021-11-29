@@ -1,4 +1,4 @@
-package bronze3;
+package silver3;
 
 import java.util.*;
 
