@@ -1,6 +1,6 @@
 from collections import deque
 # https://www.acmicpc.net/problem/2606
-def solution():
+def solution_second():
     c = int(input())
     board = [[] for _ in range(c+1)]
     for _ in range(int(input())):
@@ -39,16 +39,18 @@ def union(parent, x, y):
     else : 
         parent[x] = y
 
-## 이렇게 풀었을 경우에 
 '''
-입력값이 아래와 같이 들어갈 경우 
+원래 풀이는 입력값이 아래와 같이 들어갈 경우
+if find_p(parent, i) == 1: 
+이 부분을 그냥 parent[i]로 해서 값이 가장 작은 부모를 향하도록 초기화가 되지 않았기 때문에
 3
 2
 2 3
 1 2
 [0, 1, 1, 2] 가 되어 답을 틀린다.
+맞게 고치어 test 통과!
 '''
-def solution_fail():
+def solution():
     c = int(input())
     edges_num = int(input())
 
@@ -62,9 +64,8 @@ def solution_fail():
             union(parent, x, y)
     cnt = 0
     for i in range(2, c+1):
-        if parent[i] == 1:
+        if find_p(parent, i) == 1:
             cnt += 1
-    print(parent)
     return cnt
 
 print(solution())
