@@ -1,4 +1,5 @@
 ## https://www.acmicpc.net/problem/15649
+## 스터디 후 : arr 에 이미 있는지 체크하는 방식을 i in arr 쓰지말고 visited로 만들어 두면 훨씬 더 빨리 찾을 수 있겠다. 
 def solution():
     n, m = map(int, input().split())
     answer = []
