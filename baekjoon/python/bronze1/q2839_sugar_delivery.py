@@ -1,3 +1,4 @@
+# https://www.acmicpc.net/problem/2839
 def solution():
     n = int(input())
     q, r = divmod(n, 5)
