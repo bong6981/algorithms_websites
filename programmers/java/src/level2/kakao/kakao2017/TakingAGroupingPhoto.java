@@ -1,10 +1,9 @@
-package level2;
+package level2.kakao.kakao2017;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
+// https://programmers.co.kr/learn/courses/30/lessons/1835
 public class TakingAGroupingPhoto {
     public List<String> ps = new ArrayList<>();
 
@@ -19,15 +18,15 @@ public class TakingAGroupingPhoto {
         permutation(people, 0, people.length, people.length);
 
         int answer = ps.size();
-        for (String p : ps) {
-            List<String> position = List.of(p.split(""));
-            for (String d : data) {
-                if (!checkDistance(position, d.substring(0, 1), d.substring(2, 3), d.substring(3, 4), Integer.parseInt(d.substring(4, 5)))) {
-                    answer--;
-                    break;
-                }
-            }
-        }
+//        for (String p : ps) {
+//            List<String> position = List.of(p.split(""));
+//            for (String d : data) {
+//                if (!checkDistance(position, d.substring(0, 1), d.substring(2, 3), d.substring(3, 4), Integer.parseInt(d.substring(4, 5)))) {
+//                    answer--;
+//                    break;
+//                }
+//            }
+//        }
         return answer;
     }
 
