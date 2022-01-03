@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 // https://www.acmicpc.net/problem/15649
-public class Q15649_NAndM {
+public class Q15649_NM1 {
     private static List<Integer[]> answer;
     private static int m;
     private static int n;
