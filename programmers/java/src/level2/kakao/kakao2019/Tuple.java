@@ -15,7 +15,32 @@ public class Tuple {
         System.out.println(t.other("{{4,2,3},{3},{2,3,4,1},{2,3}}"));
     }
 
-    public List<Integer> solution(String s) {
+    private List<Integer> solution(String s) {
+        s = s.substring(2, s.length()-2);
+        String[] split = s.split("},\\{");
+        List<List<Integer>> tuple = new ArrayList<>();
+        for (String s1 : split) {
+            List<Integer> numbers = new ArrayList<>();
+            String[] split1 = s1.split(",");
+            for (String s2 : split1) {
+                numbers.add(Integer.parseInt(s2));
+            }
+            tuple.add(numbers);
+        }
+        tuple.sort(Comparator.comparingInt(List::size));
+        List<Integer> answer = new ArrayList<>();
+        for (List<Integer> t : tuple) {
+            for (Integer integer : t) {
+                if(answer.contains(integer)) {
+                    continue;
+                }
+                answer.add(integer);
+            }
+        }
+        return answer;
+    }
+
+    public List<Integer> solution_old(String s) {
         s = s.substring(1, s.length() - 2);
         List<Set<Integer>> list = new ArrayList<>();
         Arrays.stream(s.split("},"))

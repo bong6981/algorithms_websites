@@ -1,7 +1,24 @@
 #https://programmers.co.kr/learn/courses/30/lessons/64065
+def solution(s):
+    s = s[2:-2].split("},{")
+    tuple = []
+    for c in s :
+        tuple.append(list(map(int, c.split(","))))
+
+    tuple.sort(key = lambda x: len(x))
+    answer = []
+    for t in tuple:
+        if len(t) == 1:
+            answer.append(int(t[0]))
+        else:
+            for x in t :
+                x  = int(x)
+                if x not in answer:
+                    answer.append(x)
+    return answer
 
 from collections import deque
-def solution(s):
+def solution_old(s):
     s = deque(s[1:-1])
 
     input_list = []
