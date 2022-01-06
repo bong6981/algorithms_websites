@@ -35,7 +35,8 @@ def solution(orders, course):
 import collections
 import itertools
 
-def solution(orders, course):
+## 프로그래머스 풀이 : https://programmers.co.kr/learn/courses/30/lessons/72411/solution_groups?language=python3
+def solution_other(orders, course):
     result = []
 
     for course_size in course:
