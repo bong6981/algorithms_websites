@@ -1,8 +1,7 @@
-# https://www.acmicpc.net/problem/11403
+1
 from collections import deque
 def solution():
     n = int(input())
-    INF = 1e9
     board = []
     for _ in range(n):
         board.append(list(map(int, input().split())))
