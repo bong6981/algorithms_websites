@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.omg.CORBA.NO_IMPLEMENT;
-
 // https://programmers.co.kr/learn/courses/30/lessons/17679
 // 카카오 블라인드 2018
 public class Friends4Block {
