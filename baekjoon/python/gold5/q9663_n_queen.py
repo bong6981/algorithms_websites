@@ -33,3 +33,31 @@ def sol(row):
 sol(0)
 print(ans)
 
+
+visited_c = [False for _ in range(n)]
+visited_r_up = [False for _ in range((n-1) * 2 + 2)]
+visited_l_up = [False for _ in range((n-1) * 2 + 2)]
+cnt = 0
+
+def recur(i):
+    global cnt
+    if i == n :
+        cnt += 1
+        return
+
+    for j in range(n):
+        r_up_idx = i + j
+        l_up_idx = i - j
+        if l_up_idx < 0:
+            l_up_idx += 2 * n
+        if (not visited_c[j]) and (not visited_l_up[l_up_idx]) and (not visited_r_up[r_up_idx]):
+            visited_c[j] = True
+            visited_l_up[l_up_idx] = True
+            visited_r_up[r_up_idx ] = True
+            recur(i+1)
+            visited_c[j] = False
+            visited_l_up[l_up_idx] = False
+            visited_r_up[r_up_idx ] = False
+
+recur(0)
+print(cnt)
