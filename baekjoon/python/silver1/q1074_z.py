@@ -37,21 +37,21 @@ def to_decimal(quaternary_number):
         ans += (4 ** temp) * int(quaternary_number[i])
     return ans
 
-print(recur(n, r, c))
-print(to_decimal(recur(n, r, c))-1)
+# print(recur(n, r, c))
+# print(to_decimal(recur(n, r, c))-1)
 
 def sol(n, r, c):
     if n == 0:
         return 0
     half = 2 ** (n-1)
     # 1사분면
-    if r < half < c :
+    if r < half and c < half :
         return sol(n-1, r, c)
     # 2사분면 
     elif r < half <= c :
         return half ** 2 + sol(n-1, r, c-half)
     elif c < half <= r :
         return 2 * (half ** 2) + sol(n-1, r-half, c) 
-    return 2 * (half ** 2) + sol(n-1, r-half, c-half) 
+    return 3 * (half ** 2) + sol(n-1, r-half, c-half) 
 
 print(sol(n, r, c))
