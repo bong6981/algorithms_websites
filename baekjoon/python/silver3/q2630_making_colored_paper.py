@@ -1,72 +1,51 @@
 from collections import deque
-def solution() :
-    n = int(input())
-    arr = []
-    for _ in range(n):
-        arr.append(list(map(int, input().split())))
-    
-    arrs = deque([arr])
-    white = 0
-    blue = 0
-    while arrs:
-        arr = arrs.popleft()
-        n = len(arr)
-        print(arr)
-        blue_is = False
-        white_is = False
-        for i in range(len(arr)):
-            if 0 in arr[i] :
-                white_is = True
-            if 1 in arr[i] :
-                blue_is = True
-            if blue_is and white_is:
-                break
-
-        if blue_is and white_is:
-            arrs.extend(divde(arr, n)) 
-            continue
-        if white_is :
-            white += 1
+## https://www.acmicpc.net/problem/2630
+def sol(paper):
+    global white, blue
+    papers = deque([paper])
+    while len(papers) > 0:
+        paper = papers.pop()
+        rs, re, cs, ce = paper
+        len_paper = re - rs + 1
+        is_same_color, total = check(paper)
+        if is_same_color:
+            if total == 0:
+                white += 1
+            else:
+                blue += 1
         else:
-            blue += 1
-    
-    print(white)
-    print(blue)
+            if len_paper == 2:
+                blue += total
+                white += (4 - total)
+            else:
+                middle_r = (re + rs) // 2
+                middle_c = (ce + cs) // 2 
+                papers.append([rs, middle_r, cs, middle_c])
+                papers.append([rs, middle_r, middle_c+1, ce])
+                papers.append([middle_r+1, re, cs, middle_c])
+                papers.append([middle_r+1, re, middle_c+1, ce])
 
+def check(paper):
+    rs, re, cs, ce = paper
+    l = re - rs + 1
+    expected_sum = l * l 
 
-def divde(arr, n):
-    answer = []
-    c = n // 2
+    total = 0
+    for i in range(rs, re+1):
+        total += sum(whole_paper[i][cs:ce+1])
 
-    row = []
-    row2 = []
-    row3 = []
-    row4 = []
-    for i in range(c):
-        col = []
-        col2 = []
-        for j in range(c):
-            col.append(arr[i][j])
-        for j in range(c, n):
-            col2.append(arr[i][j])
-        row.append(col)
-        row2.append(col2)
-    answer.append(row)
-    answer.append(row2)
+    if total == expected_sum or total == 0:
+        return True, total
+    return False, total
 
-    for i in range(c, n):
-        col3 = []
-        col4 = []
-        for j in range(c):
-            col3.append(arr[i][j])
-        for j in range(c, n):
-            col4.append(arr[i][j])
-        row3.append(col3)
-        row4.append(col4)
-    answer.append(row3)
-    answer.append(row4)
+whole_paper = []
+n = int(input())
+for _ in range(n):
+    whole_paper.append(list(map(int, input().split())))
 
-    return answer
+white = 0
+blue = 0
+sol([0, n-1, 0, n-1])
 
-
-solution()
+print(white)
+print(blue)
