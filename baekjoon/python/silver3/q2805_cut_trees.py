@@ -20,4 +20,37 @@ def solution():
             start = mid + 1
     return answer
 
-print(solution())
+# print(solution())
+
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+trees = list(map(int, input().split()))
+
+def find_height():
+    start = 0
+    end = max(trees)
+    ans = -1
+
+    while start <= end:
+        mid = (start + end) // 2
+        to_get = 0
+        for tree in trees:
+            left = tree - mid
+            if left < 0:
+                left = 0
+            to_get += left
+        
+        if to_get >= m :
+            ans = mid
+            start = mid + 1
+        else:
+            end = mid -1
+    
+    return ans
+
+print(find_height())           
+
+
+
