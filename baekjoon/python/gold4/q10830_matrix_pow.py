@@ -24,7 +24,7 @@ def pow_n(now, n):
     half = pow_n(now, n//2)
     result = mul(half, half)
     if n % 2 == 1:
-        result = mul(result, ord)
+        result = mul(result, now)
     return result
 
 
