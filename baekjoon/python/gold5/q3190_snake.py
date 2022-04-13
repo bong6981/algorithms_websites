@@ -14,8 +14,7 @@ graph = [[0] * (n+2) for _ in range(n+2)]
 for i in [0, n+1]:
     for j in range(0, n+2):
         graph[i][j] = -1
-    for z in range(0, n+2):
-        graph[z][i] = -1
+        graph[j][i] = -1
 
 for _ in range(k):
     r, c = map(int, input().split())
