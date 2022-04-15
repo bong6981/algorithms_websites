@@ -40,34 +40,36 @@ def union(parent, x, y):
     else : 
         parent[x] = y
 
-'''
-원래 풀이는 입력값이 아래와 같이 들어갈 경우
-if find_p(parent, i) == 1: 
-이 부분을 그냥 parent[i]로 해서 값이 가장 작은 부모를 향하도록 초기화가 되지 않았기 때문에
-3
-2
-2 3
-1 2
-[0, 1, 1, 2] 가 되어 답을 틀린다.
-맞게 고치어 test 통과!
-이 풀이가 위에 풀이보다 메모디나 시간 면에서 아주 조금 더 낫다.
-'''
+
 def solution():
-    c = int(input())
-    edges_num = int(input())
+    import sys
+    input = sys.stdin.readline
 
-    parent = [0] * (c+1)
-    for i in range(1, c+1):
-        parent[i] = i
+    cnt_com = int(input().rstrip())
+    parent = list(range(cnt_com+1))
 
-    for _ in range(edges_num):
-        x, y = map(int, input().split())
-        if(find_p(parent, x) != find_p(parent, y)):
-            union(parent, x, y)
-    cnt = 0
-    for i in range(2, c+1):
-        if find_p(parent, i) == 1:
-            cnt += 1
-    return cnt
+    def find_p(x):
+        if parent[x] != x:
+            parent[x] = find_p(parent[x])
+        return parent[x]
+
+    def union(x, y):
+        x = find_p(x)
+        y = find_p(y)
+        if x < y :
+            parent[y] = x
+        else:
+            parent[x] = y
+
+
+    for _ in range(int(input().rstrip())):
+        x, y = map(int, input().rstrip().split())
+        union(x, y)
+
+    for i in range(1, cnt_com+1):
+        find_p(i)
+
+    print(parent.count(parent[1])-1)
+
 
 print(solution())
