@@ -56,3 +56,49 @@ def cal():
 recurFuc(left)
 print(max_val)
 print(min_val)
+
+### 0416 update 
+import sys
+input = sys.stdin.readline
+
+N = (int)(input().rstrip())
+numbers = list(map(int, input().rstrip().split()))
+# 덧, 뺄, 곱, 나
+op_cnt = list(map(int, input().rstrip().split()))
+
+ans_max = -1e9
+ans_min = 1e9
+
+def sol(idx, number):
+    global op_cnt, ans_min, ans_max
+    if idx == N:
+        ans_max = max(ans_max, number)
+        ans_min = min(ans_min, number)
+    for i, v in enumerate(op_cnt):
+        if v > 0:
+            if i == 0:
+                op_cnt[0] -= 1
+                sol(idx+1, number + numbers[idx])
+                op_cnt[0] += 1
+            elif i == 1:
+                op_cnt[1] -= 1
+                sol(idx+1, number - numbers[idx])
+                op_cnt[1] += 1
+            elif i == 2:
+                op_cnt[2] -= 1
+                sol(idx+1, number * numbers[idx])
+                op_cnt[2] += 1
+            else:
+                if number < 0:
+                    temp = - ((-number) // numbers[idx])
+                else:
+                    temp = number // numbers[idx]
+                op_cnt[3] -= 1
+                sol(idx+1, temp)
+                op_cnt[3] += 1
+
+sol(1, numbers[0])
+print(ans_max)
+print(ans_min)
+
+
