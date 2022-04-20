@@ -1,6 +1,6 @@
 ## https://www.acmicpc.net/problem/2665
-import heapq
 import sys
+from collections import deque
 
 input = sys.stdin.readline
 
@@ -13,12 +13,12 @@ MAX_D = 251
 dis_g = [[MAX_D] * N for _ in range(N)]
 
 dis_g[0][0] = 0 
-q = [(0, (0, 0))]
+q = deque([(0, (0, 0))])
 
 moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 while q:
-    dist, pos = heapq.heappop(q)
+    dist, pos = q.popleft()
     x, y =  pos
     if dis_g[x][y] < dist:
         continue
