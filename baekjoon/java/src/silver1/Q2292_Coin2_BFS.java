@@ -1,43 +1,45 @@
 package silver1;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class Q2292_Coin2 {
+public class Q2292_Coin2_BFS {
     static FastReader scan = new FastReader();
     static StringBuilder sb = new StringBuilder();
 
     static void input() {
         N = scan.nextInt();
         K = scan.nextInt();
-        coins = new int[N+1];
         for (int i = 0; i < N; i++) {
-            coins[i] = scan.nextInt();
+            int coin = scan.nextInt();
+            if(coin <= K) {
+                coins.add(coin);
+            }
         }
         dp = new int[10001];
-        Arrays.fill(dp, 10001);
+        Arrays.fill(dp, -1);
     }
 
     static int N, K;
-    static int[] coins, dp;
+    static List<Integer> coins = new ArrayList<>();
+    static int[] dp;
 
     static void sol() {
+        Collections.sort(coins);
+        Queue<Integer> q = new LinkedList<>();
         dp[0] = 0;
-        for (int i = 0; i < N; i++) {
-            int coin = coins[i];
-            for (int j = coin; j <= K; j++) {
-                dp[j] = Math.min(dp[j], dp[j-coin]+ 1);
+        q.add(0);
+        while(!q.isEmpty()) {
+            int now = q.poll();
+            for(int coin : coins) {
+                if( now + coin <= K && dp[now+coin] == -1) {
+                    dp[now+coin] = dp[now] + 1;
+                    q.add(now+coin);
+                }
             }
-        }
-
-        if (dp[K] == 10001) {
-            System.out.println(-1);
-            return;
         }
         System.out.println(dp[K]);
     }
-
 
     public static void main(String[] args) {
         input();
