@@ -17,3 +17,4 @@ for i in range(2, N+1):
 
 print(max(dp[N]))
 
+## 전칸이랑 전전칸만 하면 공간복잡도 줄일 수 있다 
