@@ -39,9 +39,14 @@ public class Q1806_PartialSum {
 
     static void sol() {
         int ans = N+1;
+        int start = 1;
         for(int i=1; i<=N; i++) {
-            int ret = find(i);
+            int ret = find(Math.max(i, start));
+            start = ret;
             ans = Math.min(ans, ret);
+            if(ans==N+1) {
+                break;
+            }
         }
         if(ans == N+1) {
             System.out.println(0);
