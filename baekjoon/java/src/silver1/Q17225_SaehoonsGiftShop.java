@@ -35,7 +35,31 @@ public class Q17225_SaehoonsGiftShop {
         int st = 0;
         int jt = 0;
 
-
+//        for (int j = 0; j < N; j++) {
+//            String[] next = scan.nextLine().split(" ");
+//            int t = Integer.parseInt(next[0]);
+//            int cnt = Integer.parseInt(next[2]);
+//
+//            for (int k = 0; k < cnt; k++) {
+//                if (next[1].equals("B")) {
+//                    if (st >= t) {
+//                        pq.add(new Order(st, 0));
+//                        st += sTime;
+//                    } else {
+//                        pq.add(new Order(t, 0));
+//                        st = t + sTime;                    }
+//                } else {
+//                    if (jt >= t) {
+//                        pq.add(new Order(jt, 1));
+//                        jt += jTime;
+//                    } else {
+//                        pq.add(new Order(t, 1));
+//                        jt = t + jTime;
+//                    }
+//                }
+//            }
+//
+//        }
         for (int i = 0; i < N; i++) {
             String[] next = scan.nextLine().split(" ");
             int t = Integer.parseInt(next[0]);
@@ -44,21 +68,22 @@ public class Q17225_SaehoonsGiftShop {
             int color;
             if (next[1].equals("B")) {
                 color = 0;
-                if (t > st) {
-                    st = t;
-                }
-                for (int j = 0; j < cnt; j++) {
-                    st += j * sTime;
+                for (int j = 1; j <= cnt; j++) {
+                    if (t > st) {
+                        st = t;
+                    }
                     pq.add(new Order(st, color));
+                    st += sTime;
                 }
+
             } else {
                 color = 1;
-                if (t > jt) {
-                    jt = t;
-                }
                 for (int j = 0; j < cnt; j++) {
-                    jt += j * jTime;
+                    if (t > jt) {
+                        jt = t;
+                    }
                     pq.add(new Order(jt, color));
+                    jt += jTime;
                 }
             }
         }
@@ -77,10 +102,14 @@ public class Q17225_SaehoonsGiftShop {
         }
 
         sb.append(sl.size()).append("\n");
-        sl.forEach(idx -> sb.append(idx).append(" "));
+        for (int integer : sl) {
+            sb.append(integer).append(" ");
+        }
         sb.append("\n");
         sb.append(jl.size()).append("\n");
-        jl.forEach(idx -> sb.append(idx).append(" "));
+        for (int integer : jl) {
+            sb.append(integer).append(" ");
+        }
         sb.append("\n");
 
         System.out.println(sb.toString());
