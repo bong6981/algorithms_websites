@@ -58,7 +58,40 @@ public class Q1806_PartialSum {
 
     public static void main(String[] args) {
         input();
-        sol();
+//        sol();
+        sol2();
+    }
+
+    static void input2() {
+        N = scan.nextInt();
+        S = scan.nextInt();
+        arr = new int[N+1];
+        for(int i=1; i<=N; i++) {
+            arr[i] = scan.nextInt();
+        }
+    }
+
+
+    private static void sol2() {
+        input2();
+        int r = 0, sum = 0, ans = N+1;
+        for (int l = 1; l <= N; l++) {
+            sum -= arr[l-1];
+
+            while(r+1 <= N && sum < S) {
+                sum += arr[r];
+            }
+
+            if(sum >= S) {
+                ans = Math.min(ans, r-l+1);
+            }
+
+        }
+
+        if(ans==N+1) {
+            ans = 0;
+        }
+        System.out.println(ans);
     }
 
     static class FastReader {
