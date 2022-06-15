@@ -1,5 +1,7 @@
 #112 ms,15.1 MB
 # https://leetcode.com/problems/reconstruct-itinerary/
+from collections import defaultdict
+
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         info = defaultdict(list)
@@ -30,3 +32,21 @@ class Solution:
             ans.append(tickets[t][0])
         ans.append(tickets[order[-1]][1])
         return ans 
+
+
+## 책 풀이 
+def sol(tickets):
+    graph = defaultdict(list)
+    for a, b in sorted(tickets):
+        graph[a].append(b)
+    
+    route = []
+    def dfs(s):
+        while graph[s]:
+            dfs(graph[a].pop(0))
+        route.append(a)
+
+    dfs("JFK")
+    return route[::-1]
+
+
