@@ -1,5 +1,38 @@
 ## https://programmers.co.kr/learn/courses/30/lessons/17676?language=python3
 
+## 프로그래머스 다른 사람 풀이 
+def solution(lines):
+    S, E = [], []
+    for line in lines:
+        d, s, t = line.split()
+        
+        t = float(t[:-1])
+        
+        hh, mm, ss = s.split(":")
+        seconds = float(hh) * 3600 + float(mm) * 60 + float(ss)
+        
+        E.append(seconds+1)
+        S.append(seconds-t + 0.001)
+    
+    S.sort()
+    total_lines = len(lines)
+    
+    cur_t = 0
+    max_t = 0
+    count_s = 0
+    cnt_e = 0
+    while cnt_e < total_lines and count_s < total_lines:
+        if S[count_s] < E[cnt_e]:
+            cur_t += 1
+            max_t = max(cur_t, max_t)
+            count_s += 1
+        else:
+            cur_t -= 1
+            cnt_e += 1
+    
+    return max_t
+
+
 ## 다른풀이 : 더 느림 
 def solution2(lines):
     global stack
