@@ -10,7 +10,7 @@ def solution(n, works):
             break
         max_v = works[0]
         if max_v == 0:
-            break
+            break 
         for i in range(len(works)):
             if left == 0:
                 break

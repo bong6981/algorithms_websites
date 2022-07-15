@@ -11,12 +11,14 @@ class Solution:
         dis = [INF] * (n+1)
         
         dis[k] = 0 
+        visited = [-1] * (n+1)
         heapq.heappush(q, (0, k))
         
         while q :
             t, start = heapq.heappop(q)
             if dis[start] < t:
                 continue
+            if visited
             for c, d in graph[start]:
                 cost = t + c
                 if cost < dis[d]:
