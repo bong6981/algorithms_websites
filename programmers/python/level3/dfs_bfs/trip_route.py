@@ -1,4 +1,6 @@
+## https://school.programmers.co.kr/learn/courses/30/lessons/43164?language=python3
 from collections import defaultdict, deque
+
 
 def solution(tickets):
     tickets.sort()
@@ -20,34 +22,16 @@ def solution(tickets):
                 des = tickets[i][1]
                 visited[i] = True
                 ret = dfs(arr+[des])
-                visited[i] = False
+                
                 if ret != []:
                     return ret
-        
+                visited[i] = False
         return []
     
-    # tickets.sort()
-    # info = defaultdict(deque)
-
-    # for i, t in enumerate(tickets):
-    #     s = t[0]
-    #     e = t[1]
-    #     info[s].append(e)
-
-    # def other(arr, start):
-
-    #     while info[start]:
-    #         des = info[start].popleft()
-    #         other(arr, des)
-
-    #     arr.append(start)
-   
-    
-    dfs(["ICN"])
     return dfs(["ICN"])
-    # arr = []
-    # other(arr, "ICN")
-    # return arr[::-1]
+    
+
+
     
     
 
