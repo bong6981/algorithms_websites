@@ -173,4 +173,15 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### self ###
+gradle/*
+gradlew
+gradlew.bat
+gradle.properties
+settings.gradle.kts
+build/*
+build.gradle.kts
+.gradle/*
+.idea/*
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,intellij,kotlin
