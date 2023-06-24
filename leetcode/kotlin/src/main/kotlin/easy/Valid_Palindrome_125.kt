@@ -1,5 +1,6 @@
 package easy
 
+import java.util.*
 import kotlin.math.max
 
 class Valid_Palindrome_125 {
@@ -28,8 +29,14 @@ class Valid_Palindrome_125 {
         }
         return true
     }
+
+    fun isPalindromeWithRegex(s: String): Boolean {  // 244 ms
+        val s = Regex("[^a-z0-9]").replace(s.lowercase(Locale.getDefault()), "")
+        return s == s.reversed()
+    }
 }
 
 fun main(args: Array<String>) {
-    println(Valid_Palindrome_125().isPalindrome(""))
+//    println(Valid_Palindrome_125().isPalindrome(""))
+    println(Valid_Palindrome_125().isPalindromeWithRegex("A man, a plan, a canal: Panama"))
 }
