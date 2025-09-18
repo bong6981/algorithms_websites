@@ -1,0 +1,10 @@
+# IntelliJ IDEA
+**/.idea/
+*.iml
+
+# Gradle
+**/.gradle/
+**/build/
+
+# OS별 불필요 파일
+.DS_Store
